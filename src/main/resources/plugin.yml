@@ -1,0 +1,19 @@
+name: DiscordTgAuth
+version: '${project.version}'
+main: net.millyland.authdiscord.DiscordTgAuthPlugin
+api-version: '1.21'
+description: Discord login for TgAuth (alternative to Telegram)
+depend: [TgAuth]
+libraries:
+  - net.dv8tion:JDA:${jda.version}
+
+commands:
+  tgdiscord:
+    description: DiscordTgAuth administration
+    usage: /tgdiscord <panel|adminpanel|reload>
+    permission: tgdiscord.admin
+
+permissions:
+  tgdiscord.admin:
+    description: Manage the Discord login addon
+    default: op

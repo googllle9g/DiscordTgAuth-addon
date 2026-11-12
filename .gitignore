@@ -1,0 +1,7 @@
+target/
+dependency-reduced-pom.xml
+.vscode
+.mvn/
+.idea/
+authdiscord.iml
+libs/TgAuth.jar

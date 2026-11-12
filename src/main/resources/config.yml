@@ -1,0 +1,58 @@
+# DiscordTgAuth - Discord login for TgAuth.
+# This file holds settings only. All messages live in the lang/ folder (lang/en.yml, lang/ru.yml).
+#
+# The links, the choice menu (chat or the vanilla dialog), the licence (FastLogin) and trusted-IP checks and the
+# login itself are TgAuth's job and are configured in TgAuth's config.yml (ui.*, auth.*, fastlogin.*).
+# Tip: set TgAuth's auth.auth-timeout-seconds to ~300 so players have time to use Discord.
+
+# Language of the messages: "en" or "ru" (files in plugins/DiscordTgAuth/lang/ - you can edit them or add your own, e.g. lang/de.yml).
+language: "en"
+
+
+discord:
+  # Bot token from https://discord.com/developers/applications  (Bot -> Reset Token).
+  bot-token: ""
+  # Numeric id of your Discord server. Buttons clicked in any other server are ignored. Leave empty to allow any.
+  guild-id: ""
+  # Numeric id of the link channel (e.g. #link). The bot posts the "Link" button there.
+  # (Developer Mode in Discord -> right click the channel -> Copy Channel ID.)
+  link-channel-id: ""
+  # Name of the link channel as shown to players in the in-game instructions (without #).
+  link-channel-name: "link"
+  # Invite link shown as the clickable "join the Discord" button in game.
+  # Leave it empty and the bot creates a permanent invite itself (needs the "Create Invite"
+  # permission) and writes it here.
+  invite-url: ""
+  # How many game accounts one Discord account may link.
+  max-accounts-per-discord: 1
+  # Admin panel: numeric id of a PRIVATE channel where the bot posts the "Open admin panel" message
+  # (find a player, kick, ban, warn, unban, remove premium, unlink - reason and duration are typed into a
+  # Discord form). Leave empty to turn the admin panel off. Run /tgdiscord adminpanel to post it again.
+  admin-channel-id: ""
+  # Who may use it: every Discord user whose linked game account has TgAuth's tgauth.admin permission, plus
+  # the Discord user ids listed here (quote them: "123456789012345678").
+  admin-ids: []
+  # How long (minutes) a verified admin can keep using the panel before the check is repeated.
+  admin-session-minutes: 10
+
+# Proxy for the Discord bot (REST and gateway), for servers that cannot reach discord.com directly.
+# This is the master switch: with enabled: false the bot always connects directly, and the proxy taken from
+# TgAuth is ignored too. Read at startup (restart the server or reload the plugin to change it).
+proxy:
+  enabled: false
+  # Manual proxy: used when "host" is filled in. HTTP, SOCKS4 or SOCKS5.
+  type: SOCKS5
+  host: ""
+  port: 1080
+  # Optional login (leave empty for none).
+  username: ""
+  password: ""
+  # When "host" is empty: use the proxy TgAuth uses (its proxy.* config, or an addon that supplies one through
+  # the TgAuth API). Needs TgAuth with API version 5.
+  use-tgauth-proxy: true
+
+login:
+  # (The confirmation timeout, trusted IPs and licence skipping are TgAuth settings.)
+  # Wrong codes in a row before a Discord user is locked out, and for how long (seconds).
+  max-wrong-codes: 5
+  wrong-code-lockout-seconds: 300
